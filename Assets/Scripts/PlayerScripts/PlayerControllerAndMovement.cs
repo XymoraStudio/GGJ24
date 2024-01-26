@@ -5,13 +5,16 @@ using UnityEngine;
 public class PlayerControllerAndMovement : MonoBehaviour
 {
     public static PlayerControllerAndMovement instance;
-    public float mouseSensitivity = 2f;
+    [Header ("Camera")]
+    [SerializeField] private float mouseSensitivity = 2f;
     public Transform playerCamera;
-    public float movementSpeed = 1.5f;
-    public float sprintStrenght = 2f;
-    public float gravityStrenght = 2f;
-    Vector3 movementInput;
-    CharacterController cc;
+
+    [Header ("Movement")]
+    [SerializeField] private float movementSpeed = 1.5f;
+    [SerializeField] private float sprintStrenght = 2f;
+    [SerializeField] private float gravityStrenght = 2f;
+    private Vector3 movementInput;
+    private CharacterController cc;
 
     private void Awake() {
         instance = this;

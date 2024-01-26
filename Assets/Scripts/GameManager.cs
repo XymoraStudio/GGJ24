@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public int timeAfterDeathToRestart = 3;
+    [SerializeField] private int timeAfterDeathToRestart = 3;
+    public int productivityMeter = 100;
+
     private void Awake() {
         instance = this;
     }

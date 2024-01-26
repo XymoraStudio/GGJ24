@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 723d1a6ff819c6e4f9fb408279361f7a, type: 3}
+  m_Name: CursorSpriteSet
+  m_EditorClassIdentifier: 
+  _normal:
+    Textures:
+    - {fileID: 2800000, guid: a4c51e5b8486c024791c748af5adb646, type: 3}
+    Offset: {x: 0, y: 0}
+  _hovering:
+    Textures:
+    - {fileID: 2800000, guid: 627613f680519bb44b25995eb73d778d, type: 3}
+    Offset: {x: 0, y: 0}
+  _interactable:
+    Textures:
+    - {fileID: 2800000, guid: 51a523ab608c37d43a9d63bc786b43af, type: 3}
+    Offset: {x: 0, y: 0}
+  _nonInteractable:
+    Textures:
+    - {fileID: 2800000, guid: 92e84b07b18e8e84aa559f23a71258bf, type: 3}
+    Offset: {x: 0, y: 0}
+  _dragging:
+    Textures:
+    - {fileID: 2800000, guid: df7e3ed63db2017458a944bf3f600ea2, type: 3}
+    Offset: {x: 0, y: 0}
+  _clicked:
+    Textures:
+    - {fileID: 2800000, guid: df7e3ed63db2017458a944bf3f600ea2, type: 3}
+    Offset: {x: 0, y: 0}
+  _waiting:
+    Textures:
+    - {fileID: 2800000, guid: 37eaff85d167dc64da1c7225724bbf1a, type: 3}
+    - {fileID: 2800000, guid: 9843027ecc49c6148a445e1f024abd52, type: 3}
+    - {fileID: 2800000, guid: c9d71d5d94dc707489b7506a4f129e1c, type: 3}
+    - {fileID: 2800000, guid: 1945e6998f2d26b4f962c748d6a52b6d, type: 3}
+    - {fileID: 2800000, guid: b3770b03646baac42bc08e07c37c03d8, type: 3}
+    - {fileID: 2800000, guid: 7a5f53e48a4ef1f4f9b6203d82088d7b, type: 3}
+    - {fileID: 2800000, guid: 361d242fcb5f5ca48abe520018519f9b, type: 3}
+    - {fileID: 2800000, guid: d2b5cd6586b433a478f9d2ce77a01f76, type: 3}
+    Offset: {x: 15, y: 15}
+  _friendly:
+    Textures:
+    - {fileID: 2800000, guid: 7cc8f4f1f46771c40864bda3b891086a, type: 3}
+    Offset: {x: 0, y: 0}
+  _enemy:
+    Textures:
+    - {fileID: 2800000, guid: 07196179f296f1d4bb2afe856a56a7b7, type: 3}
+    Offset: {x: 0, y: 0}

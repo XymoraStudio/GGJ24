@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerControllerAndMovement : MonoBehaviour
 {
-    public static PlayerController instance;
+    public static PlayerControllerAndMovement instance;
     public float mouseSensitivity = 2f;
     public Transform playerCamera;
     public float movementSpeed = 1.5f;

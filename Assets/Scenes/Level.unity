@@ -248,6 +248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvlRestartKey: 114
   sprintKey: 304
+  gunShoot: 323
 --- !u!114 &200278301
 MonoBehaviour:
   m_ObjectHideFlags: 0

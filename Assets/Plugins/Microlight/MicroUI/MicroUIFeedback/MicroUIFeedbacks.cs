@@ -10,9 +10,9 @@ namespace Microlight.MicroUI {
     // Contains animatons for UI effects
     // ****************************************************************************************************
     public static class MicroUIFeedbacks {
-        public static Tween PlayAnimation(MicroUIFeedbackAnimations animation) {
+        public static Tween PlayAnimation(Transform go, MicroUIFeedbackAnimations animation) {
             return animation switch {
-                MicroUIFeedbackAnimations.ScaleUpBounce => ScaleUpBounce(null),
+                MicroUIFeedbackAnimations.ScaleUpBounce => ScaleUpBounce(go),
                 _ => null
             };
         }

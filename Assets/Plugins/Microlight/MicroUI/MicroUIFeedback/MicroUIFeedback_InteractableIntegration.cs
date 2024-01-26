@@ -12,22 +12,20 @@ namespace Microlight.MicroUI {
         [SerializeField] MicroUIFeedbackAnimations _unhoverAnimation;
 
         void Start() {
-            _interactable = GetComponent<MicroInteractable>();            
-        }
-        private void OnEnable() {
+            _interactable = GetComponent<MicroInteractable>();
             if(!_subscribedToEvents && _interactable != null) {
                 _subscribedToEvents = true;
                 _interactable.OnHoverChange += OnHoverChange;
             }
         }
-        private void OnDisable() {
+        private void OnDestroy() {
             _subscribedToEvents = false;
             _interactable.OnHoverChange -= null;
         }
 
         void OnHoverChange(MicroInteractable interactable) {
-            if(interactable.IsHovered) MicroUIFeedbacks.PlayAnimation(_hoverAnimation);
-            else MicroUIFeedbacks.PlayAnimation(_unhoverAnimation);
+            if(interactable.IsHovered) MicroUIFeedbacks.PlayAnimation(_interactable.transform, _hoverAnimation);
+            else MicroUIFeedbacks.PlayAnimation(_interactable.transform, _unhoverAnimation);
         }
     }
 }

@@ -33,12 +33,12 @@ public class Gun : MonoBehaviour
     void Update()
     {
         // We update gun's state
-        if (Input.GetKeyDown(KeyBinds.instance.gunShoot))
+        if (Input.GetKeyDown(KeyBinds.instance.attack))
         {
             if (state == State.Idle) state = State.Shooting;
         }
 
-        if (Input.GetKeyUp(KeyCode.Mouse0))
+        if (Input.GetKeyUp(KeyBinds.instance.attack))
         {
             if (state == State.Shooting) state = State.Idle;
         }

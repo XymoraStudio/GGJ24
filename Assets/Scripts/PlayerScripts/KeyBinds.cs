@@ -7,8 +7,8 @@ public class KeyBinds : MonoBehaviour
     public static KeyBinds instance;
 
     public KeyCode lvlRestartKey = KeyCode.R;
-    public KeyCode gunShoot = KeyCode.Mouse0;
-
+    public KeyCode sprintKey = KeyCode.LeftShift;
+    
     private void Awake() {
         instance = this;
     }

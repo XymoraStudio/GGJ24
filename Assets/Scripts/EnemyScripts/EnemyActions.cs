@@ -5,8 +5,22 @@ using UnityEngine;
 public class EnemyActions : MonoBehaviour
 {
     public bool active;
+    private Animator animatorControl;
+    [SerializeField] private string workingParametarName;
+    [SerializeField] private string misbehaviourParametarName;
 
-    public void ActivatingOrDeactivating(bool active){
-        gameObject.SetActive(active);
+    private void Awake() {
+        animatorControl = GetComponent<Animator>();
+    } 
+    
+    private void Update() {
+        if(active){
+            animatorControl.SetBool(workingParametarName, active);
+            animatorControl.SetBool(misbehaviourParametarName, !active);
+        }
+        else{
+            animatorControl.SetBool(workingParametarName, active);
+            animatorControl.SetBool(misbehaviourParametarName, !active);
+        }
     }
 }

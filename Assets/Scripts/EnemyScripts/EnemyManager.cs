@@ -36,14 +36,12 @@ public class EnemyManager : MonoBehaviour
         int choosenCubicle = Random.Range(0, cubicles.Count-1);
         currentActiveCubicle = choosenCubicle;
         cubicles[choosenCubicle].GetComponent<EnemyActions>().active = true;
-        cubicles[choosenCubicle].SetActive(true);
         currentTimeActive = Random.Range(minTimeActive, maxTimeActive);
     }
 
     private void DeactivatingCurrentActiveCubicle(){
         try{
             cubicles[currentActiveCubicle].GetComponent<EnemyActions>().active = false;
-            cubicles[currentActiveCubicle].SetActive(false);
         }
         catch
         {}

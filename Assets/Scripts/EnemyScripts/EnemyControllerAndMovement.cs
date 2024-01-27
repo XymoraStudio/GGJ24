@@ -10,75 +10,45 @@ public class EnemyControllerAndMovement : MonoBehaviour
     private Vector3 startingPoint;
     private Transform destinationPoint;
     [SerializeField] private int minWaitTimeAtPatrolPoint = 3;
-    [SerializeField] private int maxWaitTimeAtPatrolPoint = 10;
-    [SerializeField] private int minRange;
-    [SerializeField] private int maxRange;
-    private float waitTime;
-    private bool atPatrolPoint;
-    private Transform currentPatrolPoint;
-    private bool patrolMode;
+    [SerializeField] private int maxWaitTimeAtPatrolPoint = 5;
+    private float currentTimeAtPatrolPoint;
+    [SerializeField] private List<Transform> patrolPoints = new List<Transform>();
+    [SerializeField] private string walkingParametarName;
+    [SerializeField] private Animator animatorControl;
 
     private void Awake() {
         agent = GetComponent<NavMeshAgent>();
         startingPoint = transform.position;
-        atPatrolPoint = false;
-        destinationPoint = null;
-        agent.destination = startingPoint;
-        patrolMode = false;
-    }
-
-    private void Start() {
-        
+        currentTimeAtPatrolPoint = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(atPatrolPoint && waitTime > 0){
-            Debug.Log(waitTime);
-            waitTime = waitTime - Time.deltaTime;
-            if(waitTime <= 0){
-                destinationPoint = null;
-            }
-        }
-        if(destinationPoint == null){
+        if(currentTimeAtPatrolPoint <= 0){
             Patrolling();
+            animatorControl.SetBool(walkingParametarName, true);
+        }
+        else if(agent.destination == transform.position){
+            currentTimeAtPatrolPoint -= Time.deltaTime;
         }
     }
 
-    public void Patrolling(){
-        try{
-            if(PatrolControl.instance.CheckingIfNewEnemyCanStartPatrol() || patrolMode){
-                destinationPoint = PatrolControl.instance.Choosing(minRange, maxRange, ref patrolMode);
-                agent.destination = destinationPoint.position;
-                waitTime = Random.Range(minWaitTimeAtPatrolPoint, maxWaitTimeAtPatrolPoint);
-            }
-        }
-        catch{
-            Debug.Log("Slobodni patrol point nije naden");
-            destinationPoint = null;
-        }
+    private void Patrolling(){
+        int choosenPatrolPoint = Random.Range(0, patrolPoints.Count-1);
+        agent.destination = patrolPoints[choosenPatrolPoint].position;
+        currentTimeAtPatrolPoint = Random.Range(minWaitTimeAtPatrolPoint, maxWaitTimeAtPatrolPoint);
     }
 
-    private void OnTriggerEnter(Collider other) {
-        if(other.tag == "Patrol point"){
-            atPatrolPoint = true;
-            currentPatrolPoint = other.gameObject.transform;
-            PatrolControl.instance.EnteringAPatrolPoint(currentPatrolPoint, minRange, maxRange);
-        }
-    }
-
-    private void OnTriggerExit(Collider other) {
-        if(other.tag == "Patrol point"){
-            atPatrolPoint = false;
-            PatrolControl.instance.LeavingAPatrolPoint(currentPatrolPoint);
-            Debug.Log("Napusta trenutni patrol point");
+    private void OnTriggerEnter(Collider other){
+        Debug.Log("uslo");
+        if(other.tag == "PatrolP"){
+            agent.destination = transform.position;
+            animatorControl.SetBool(walkingParametarName, false);
         }
     }
 
     private void ReturningToHisDesk(){
         agent.destination = startingPoint;
-        PatrolControl.instance.RemovingEnemyFromPatrol();
-        patrolMode = false;
     }
 }

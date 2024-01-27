@@ -27,7 +27,7 @@ public class GameOverController : MonoBehaviour {
         get => _wages;
         set {
             _wages = value;
-            wagesValueText.text = $"{_wages}$";
+            wagesValueText.text = $"{_wages:N0}$";
             Profits = 0;
         }
     }
@@ -36,7 +36,7 @@ public class GameOverController : MonoBehaviour {
         get => _expenses;
         set {
             _expenses = value;
-            expensesValueText.text = $"{_expenses}$";
+            expensesValueText.text = $"{_expenses:0}$";
             Profits = 0;
         }
     }
@@ -45,7 +45,7 @@ public class GameOverController : MonoBehaviour {
         get => _income;
         set {
             _income = value;
-            incomeValueText.text = $"{_income}$";
+            incomeValueText.text = $"{_income:0}$";
             Profits = 0;
         }
     }
@@ -54,11 +54,15 @@ public class GameOverController : MonoBehaviour {
         get => _profits;
         set {
             _profits = Income - Wages - Expenses;
-            profitsValueText.text = $"{_profits}$";
+            profitsValueText.text = $"{_profits:0}$";
         }
     }
 
     void Start() {
+        // TEST
+        GameState.Productivity = 50;
+        GameState.Wages = 2500;
+        GameState.Expenses = 1000;
         PrepareScreen();
         AnimateGameOver();
     }
@@ -70,6 +74,7 @@ public class GameOverController : MonoBehaviour {
         expensesText.transform.localScale = new Vector3(1.7f, 1.7f, 1.7f);
         incomeText.transform.localScale = new Vector3(1.7f, 1.7f, 1.7f);
         profitsText.transform.localScale = new Vector3(1.7f, 1.7f, 1.7f);
+        productivityBar.transform.localScale = new Vector3(1f, 0f, 1f);
 
         // Alpha
         GameState.SetAlpha(wagesText, 0);
@@ -89,8 +94,10 @@ public class GameOverController : MonoBehaviour {
     void AnimateGameOver() {
         Sequence screenAnimation = DOTween.Sequence();
 
+        // Animate game appearing
         screenAnimation.Append(titleText.transform.DOScale(1f, 0.5f));
-        screenAnimation.Append(wagesText.transform.DOScale(1f, 0.3f));
+        screenAnimation.Append(productivityBar.transform.DOScaleY(GameState.Productivity / GameState.MaxProductivity, 0.6f));
+        screenAnimation.Join(wagesText.transform.DOScale(1f, 0.3f));        
         screenAnimation.Join(wagesText.DOFade(1f, 0.15f));
         screenAnimation.Join(wagesValueText.DOFade(1f, 0.15f));
         screenAnimation.Join(expensesText.transform.DOScale(1f, 0.3f).SetDelay(0.15f));
@@ -102,5 +109,10 @@ public class GameOverController : MonoBehaviour {
         screenAnimation.Join(profitsText.transform.DOScale(1f, 0.3f).SetDelay(0.15f));
         screenAnimation.Join(profitsText.DOFade(1f, 0.15f));
         screenAnimation.Join(profitsValueText.DOFade(1f, 0.15f));
+
+        screenAnimation.Append(DOTween.To(() => Wages, x => Wages = x, GameState.Wages, 1f).SetDelay(0.5f).SetEase(Ease.OutCubic));
+        screenAnimation.Append(DOTween.To(() => Expenses, x => Expenses = x, GameState.Expenses, 1f).SetDelay(0.5f).SetEase(Ease.OutCubic));
+        screenAnimation.Append(DOTween.To(() => Income, x => Income = x, GameState.IncomePerProductivity * GameState.Productivity, 2f).SetDelay(0.5f).SetEase(Ease.OutCubic));
+        screenAnimation.Join(productivityBar.transform.DOScaleY(0, 2f).SetEase(Ease.OutCubic));
     }
 }

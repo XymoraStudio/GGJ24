@@ -25,15 +25,32 @@ public static class GameState {
     public static float Expenses { get; set; }
 
     // Time
-    public const float StartTime = 9;
-    public const float EndTime = 17;
-    public const float DayDurationSec = 120;
-    static float _time;
-    public static float Time {
-        get => _time;
-        set {
-            _time = value;
+    public static Action OnDayEnd;
+    const float StartTime = 9;
+    const float EndTime = 17;
+    const float DayDurationSec = 120;
+    static float TimePerSec = (EndTime - StartTime) / DayDurationSec;
+    static bool DayActive = false;
+    static float _clock;
+    public static float Clock {
+        get => _clock;
+        private set {
+            _clock = value;
+            if(_clock >= EndTime) {
+                DayActive = false;
+                OnDayEnd?.Invoke();
+            }
         }
+    }
+    public static void StartDay() {
+        Clock = StartTime;
+        DayActive = true;
+    }
+    public static void UpdateTime() {
+        if(!DayActive) {
+            return;
+        }
+        Clock += TimePerSec * Time.deltaTime;        
     }
 
     public static void SetAlpha(TMP_Text text, float alpha) {

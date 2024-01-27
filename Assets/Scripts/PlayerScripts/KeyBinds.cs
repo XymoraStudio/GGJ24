@@ -8,6 +8,7 @@ public class KeyBinds : MonoBehaviour
 
     public KeyCode lvlRestartKey = KeyCode.R;
     public KeyCode sprintKey = KeyCode.LeftShift;
+    public KeyCode attack = KeyCode.Mouse0;
     
     private void Awake() {
         instance = this;

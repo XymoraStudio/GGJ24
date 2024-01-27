@@ -9,15 +9,21 @@ public class EnemyActions : MonoBehaviour
     private Animator animatorControl;
     [SerializeField] private string workingParametarName;
     [SerializeField] private string misbehaviourParametarName;
-    private Transform startTransform;
+    private ParticleSystem laughingPS;
 
     private void Awake() {
         animatorControl = GetComponent<Animator>();
-        startTransform = transform;
+        laughingPS = GetComponentInChildren<ParticleSystem>();
     } 
     
-    private void Update(){
-        animatorControl.SetBool(workingParametarName, active);
-        animatorControl.SetBool(misbehaviourParametarName, !active);
+    private void Update() {
+        animatorControl.SetBool(workingParametarName, !active);
+        animatorControl.SetBool(misbehaviourParametarName, active);
+
+        laughingPS.gameObject.SetActive(active);
+    }
+}
+            animatorControl.SetBool(misbehaviourParametarName, !active);
+        }
     }
 }

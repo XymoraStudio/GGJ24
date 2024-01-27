@@ -55,7 +55,8 @@ public class Melee : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(raySpawnPoint.position, raySpawnPoint.TransformDirection(Vector3.forward), out hit, range))
             {
-                Debug.Log("Melee attack hit");
+                if (hit.collider.tag == "OfficeWorker")
+                    hit.collider.transform.parent.GetComponent<EnemyActions>().active = false;
                 Debug.DrawRay(raySpawnPoint.position, raySpawnPoint.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
                 lastAttackTime = Time.time;
             }

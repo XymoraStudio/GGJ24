@@ -27,15 +27,13 @@ public class EnemyManager : MonoBehaviour
     }
 
 
-    private void Update(){
-        if(!allMisbehaving){
-            if(currentTimeActive > 0){
-                currentTimeActive -= Time.deltaTime;
-            }
-            else{
-                //DeactivatingCurrentMisbehavingCubicle();
-                ChoosingAMisbehavingCubicle();
-            }
+    private void Update() {
+        if(currentTimeActive > 0){
+            currentTimeActive -= Time.deltaTime;
+        }
+        else{
+            //DeactivatingCurrentActiveCubicle();
+            ChoosingAMisbehavingCubicle();
         }
     }
 

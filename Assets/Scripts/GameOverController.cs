@@ -155,7 +155,8 @@ public class GameOverController : MonoBehaviour {
     }
     void AnimatePCLight() {
         pcLightSequence = DOTween.Sequence();
-        pcLightSequence.Append(pcLight.DOIntensity(2f, 2f));
-        pcLightSequence.Append(pcLight.DOIntensity(0.5f, 2f));
+        pcLightSequence.Append(pcLight.DOIntensity(6f, 2f));
+        pcLightSequence.Append(pcLight.DOIntensity(1.5f, 2f));
+        pcLightSequence.SetLoops(-1);
     }
 }

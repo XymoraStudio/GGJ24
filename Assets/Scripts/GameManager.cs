@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     [SerializeField] private int timeAfterDeathToRestart = 3;
-    public int productivityMeter = 100;
 
     private void Awake() {
         instance = this;
@@ -15,6 +14,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameState.OnGameOver += PlayerDeath;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void PlayerDeath(){
+    private void PlayerDeath(){
         Invoke(nameof(RestartingLvl), timeAfterDeathToRestart);
     }
 }

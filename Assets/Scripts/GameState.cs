@@ -11,7 +11,7 @@ public static class GameState {
         set {
             if(_productivity == value) return;
 
-            value = Mathf.Clamp(value, 0f, 100f);
+            value = Mathf.Clamp(value, 0f, MaxProductivity);
             _productivity = value;
             OnProductivityChange?.Invoke();
             if(_productivity <= 0) OnGameOver?.Invoke();

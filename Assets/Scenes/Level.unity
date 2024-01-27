@@ -248,7 +248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvlRestartKey: 114
   sprintKey: 304
-  gunShoot: 323
+  attack: 323
 --- !u!114 &200278301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -859,7 +859,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1179799329}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 202344b68526c734d8541f8d9908920c, type: 3}
+  m_Script: {fileID: 11500000, guid: d2fd5a4e0bc93a24cb2acb17610e5d47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   minWaitTimeAtPatrolPoint: 3
@@ -1078,7 +1078,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1443988192}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96c5c433b861df446a7a87e214eb9702, type: 3}
+  m_Script: {fileID: 11500000, guid: dfa12123c408f514fa3303110f7ca3fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   patrolPoints:

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Scripts/PlayerScripts/PlayerController.cs.meta
+guid: d2fd5a4e0bc93a24cb2acb17610e5d47
+=======
+guid: 202344b68526c734d8541f8d9908920c
+>>>>>>> PlayerAndEnemyController:Assets/Scripts/EnemyScripts/EnemyController.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

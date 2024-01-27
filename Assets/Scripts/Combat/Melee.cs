@@ -9,6 +9,7 @@ public class Melee : MonoBehaviour
     [SerializeField] private float cooldown;
     [SerializeField] private float range;
     [SerializeField] private Transform raySpawnPoint; // From which point we cast ray
+    [SerializeField] private Animator handAnimator;
 
     private State state;
     private float lastAttackTime = 0;
@@ -48,6 +49,9 @@ public class Melee : MonoBehaviour
     {
         if (Time.time - lastAttackTime > cooldown) // Enough time have passed to attack again
         {
+            handAnimator.SetBool("slap", true);
+            Invoke("CancleSlap", 0.5f);
+
             RaycastHit hit;
             if (Physics.Raycast(raySpawnPoint.position, raySpawnPoint.TransformDirection(Vector3.forward), out hit, range))
             {
@@ -56,5 +60,10 @@ public class Melee : MonoBehaviour
                 lastAttackTime = Time.time;
             }
         }
+    }
+
+    private void CancleSlap()
+    {
+        handAnimator.SetBool("slap", false);
     }
 }

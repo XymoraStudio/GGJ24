@@ -147,7 +147,7 @@ Material:
     - _ShnOverlap: 0
     - _ShnRange: 0.019
     - _ShnSmooth: 0
-    - _Smoothness: 0.5
+    - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SpecularNoiseSize: 1
@@ -165,8 +165,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.5727127, g: 0.6226415, b: 0.6034484, a: 0}
-    - _Color: {r: 0.5727127, g: 0.62264144, b: 0.6034484, a: 0}
+    - _BaseColor: {r: 0.32306868, g: 0.41509432, b: 0.37969983, a: 0}
+    - _Color: {r: 0.32306865, g: 0.4150943, b: 0.3796998, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}

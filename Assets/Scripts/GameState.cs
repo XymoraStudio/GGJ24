@@ -3,6 +3,7 @@ using UnityEngine;
 using TMPro;
 
 public static class GameState {
+    // Productivity
     public static Action OnProductivityChange;
     public static Action OnGameOver;
     static float _productivity;
@@ -18,11 +19,22 @@ public static class GameState {
         }
     }
     public const float MaxProductivity = 100f;
-    public const float ProductivityLostPerSec = 1;
-    public const float DayDurationSec = 120;
+    public const float ProductivityLostPerSec = 1;    
     public const float IncomePerProductivity = 100;
     public static float Wages { get; set; }
     public static float Expenses { get; set; }
+
+    // Time
+    public const float StartTime = 9;
+    public const float EndTime = 17;
+    public const float DayDurationSec = 120;
+    static float _time;
+    public static float Time {
+        get => _time;
+        set {
+            _time = value;
+        }
+    }
 
     public static void SetAlpha(TMP_Text text, float alpha) {
         Color color = text.color;

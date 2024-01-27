@@ -23,7 +23,3 @@ public class EnemyActions : MonoBehaviour
         laughingPS.gameObject.SetActive(active);
     }
 }
-            animatorControl.SetBool(misbehaviourParametarName, !active);
-        }
-    }
-}

@@ -13,6 +13,10 @@ public class PlayerControllerAndMovement : MonoBehaviour
     [SerializeField] private float movementSpeed = 1.5f;
     [SerializeField] private float sprintStrenght = 2f;
     [SerializeField] private float gravityStrenght = 2f;
+    [SerializeField] private float jumpStrenght = 2f;
+
+    [Header ("Abilities")]
+    [SerializeField] private float dashStrenght = 5f;
     private Vector3 movementInput;
     private CharacterController cc;
 
@@ -29,6 +33,7 @@ public class PlayerControllerAndMovement : MonoBehaviour
     }
 
     void PlayerMoving(){
+        float inputY = movementInput.y;
         Vector3 inputX = transform.right * Input.GetAxis("Horizontal");
         Vector3 inputZ = transform.forward * Input.GetAxis("Vertical");
         movementInput = inputX + inputZ;
@@ -42,11 +47,18 @@ public class PlayerControllerAndMovement : MonoBehaviour
         else{
             movementInput *= movementSpeed;
         }
+        movementInput.y = inputY;
         if(cc.isGrounded){
             movementInput.y = Physics.gravity.y * gravityStrenght * Time.deltaTime;
+            if(Input.GetKeyDown(KeyBinds.instance.dash)){
+                movementInput *= dashStrenght;
+            }
         }
         else{
             movementInput.y += Physics.gravity.y * gravityStrenght * Time.deltaTime;
+        }
+        if(Input.GetKey(KeyBinds.instance.jump) && cc.isGrounded){
+            movementInput.y = jumpStrenght;
         }
         cc.Move(movementInput * Time.deltaTime);
     }

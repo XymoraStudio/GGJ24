@@ -11,6 +11,7 @@ public class KeyBinds : MonoBehaviour
     public KeyCode attack = KeyCode.Mouse0;
     public KeyCode jump = KeyCode.Space;
     public KeyCode dash = KeyCode.E;
+    public KeyCode ability = KeyCode.Q;
     
     private void Awake() {
         instance = this;

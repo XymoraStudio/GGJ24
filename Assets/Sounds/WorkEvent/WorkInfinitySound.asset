@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6746f10705d380443ae6a984c239a613, type: 3}
+  m_Name: WorkInfinitySound
+  m_EditorClassIdentifier: 
+  _loopClip: {fileID: 8300000, guid: c4e4dbc05855462489a3a4fb11ecfc0a, type: 3}
+  _loopVolume: 1
+  _loopPitch: 1
+  _startClip: {fileID: 0}
+  _startVolume: 1
+  _startPitch: 1
+  _endClip: {fileID: 0}
+  _endVolume: 1
+  _endPitch: 1
+  _randomClips:
+  - {fileID: 8300000, guid: e7a5799db098efb468a36f8db132b804, type: 3}
+  - {fileID: 8300000, guid: 593a7f8695c61b8448b8ff27300f4313, type: 3}
+  - {fileID: 8300000, guid: b05fe40905177fc48b7a5a89432e2e9d, type: 3}
+  - {fileID: 8300000, guid: 338bb51404732e54cae89ea8d922b233, type: 3}
+  - {fileID: 8300000, guid: 37fd10b54f20d294a92f472cd84d5fd2, type: 3}
+  _randomVolume: 1
+  _randomPitch: 1
+  _minTimeBetweenRandomClips: 0.5
+  _maxTimeBetweenRandomClips: 1
+  _delayFirstRandomClip: 0

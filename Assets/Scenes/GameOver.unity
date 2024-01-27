@@ -1156,17 +1156,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 256605386}
-  m_LocalRotation: {x: 0, y: 0, z: -0.25375786, w: 0.9672678}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1989454126}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -29.4}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -17.5, y: -36.21}
-  m_SizeDelta: {x: 100, y: 60}
+  m_AnchoredPosition: {x: 0, y: -36.21}
+  m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &256605388
 MonoBehaviour:
@@ -1188,7 +1188,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 222961a465cd9dd45b4f8c36a049a639, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b5514f0af0a47d447951f6a2679d0ea0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5903,6 +5903,7 @@ MonoBehaviour:
   profitsValueText: {fileID: 1795734754}
   productivityBar: {fileID: 421144611}
   pcLight: {fileID: 1994020874}
+  cashTallySound: {fileID: 8300000, guid: 3353a41f3624cbb438c41083e64550c3, type: 3}
 --- !u!1 &1681036852
 GameObject:
   m_ObjectHideFlags: 0
@@ -8470,6 +8471,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clockHandTransform: {fileID: 8335739177444059873}
   productivityBar: {fileID: 1293210090}
+  microInfinitySoundGroup: {fileID: 11400000, guid: cd77cf13547f34c4fa7f39b6fe238571,
+    type: 2}
 --- !u!137 &8602530503663265351
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0

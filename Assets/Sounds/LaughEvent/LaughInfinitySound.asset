@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6746f10705d380443ae6a984c239a613, type: 3}
+  m_Name: LaughInfinitySound
+  m_EditorClassIdentifier: 
+  _loopClip: {fileID: 8300000, guid: 5aeaa066cae398848b279a8c587215d7, type: 3}
+  _loopVolume: 1
+  _loopPitch: 1
+  _startClip: {fileID: 0}
+  _startVolume: 1
+  _startPitch: 1
+  _endClip: {fileID: 0}
+  _endVolume: 1
+  _endPitch: 1
+  _randomClips:
+  - {fileID: 8300000, guid: 77d3ff911331d92438aa7d6e6a19ea8a, type: 3}
+  - {fileID: 8300000, guid: d23e6a2bdee62d34a91200f07fede376, type: 3}
+  - {fileID: 8300000, guid: e9b341c6f8ed4b74c965608053757a89, type: 3}
+  _randomVolume: 1
+  _randomPitch: 1
+  _minTimeBetweenRandomClips: 1
+  _maxTimeBetweenRandomClips: 3
+  _delayFirstRandomClip: 0

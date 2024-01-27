@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+using Microlight.MicroAudio;
 
 public class GameOverController : MonoBehaviour {
     [Header("Title")]
@@ -24,6 +25,14 @@ public class GameOverController : MonoBehaviour {
 
     [Header("Lights")]
     [SerializeField] Light pcLight;
+
+    [Header("Sounds")]
+    [SerializeField] AudioClip cashTallySound;
+
+    [Header("Eyes")]
+    [SerializeField] GameObject normalEyes;
+    [SerializeField] GameObject tiredEyes;
+    [SerializeField] GameObject happyEyes;
 
     float _wages;
     float Wages {
@@ -128,6 +137,11 @@ public class GameOverController : MonoBehaviour {
         Wages = 0;
         Expenses = 0;
         Income = 0;
+
+        // Eyes
+        normalEyes.SetActive(true);
+        tiredEyes.SetActive(false);
+        happyEyes.SetActive(false);
     }
     void AnimateGameOver() {
         uiSequence = DOTween.Sequence();
@@ -148,9 +162,9 @@ public class GameOverController : MonoBehaviour {
         uiSequence.Join(profitsText.DOFade(1f, 0.15f));
         uiSequence.Join(profitsValueText.DOFade(1f, 0.15f));
 
-        uiSequence.Append(DOTween.To(() => Wages, x => Wages = x, GameState.Wages, 1f).SetDelay(0.5f).SetEase(Ease.OutCubic));
-        uiSequence.Append(DOTween.To(() => Expenses, x => Expenses = x, GameState.Expenses, 1f).SetDelay(0.5f).SetEase(Ease.OutCubic));
-        uiSequence.Append(DOTween.To(() => Income, x => Income = x, GameState.IncomePerProductivity * GameState.Productivity, 2f).SetDelay(0.5f).SetEase(Ease.OutCubic));
+        uiSequence.Append(DOTween.To(() => Wages, x => Wages = x, GameState.Wages, 1f).SetDelay(0.5f).SetEase(Ease.OutCubic).OnStart(PlayCashTally));
+        uiSequence.Append(DOTween.To(() => Expenses, x => Expenses = x, GameState.Expenses, 1f).SetDelay(0.5f).SetEase(Ease.OutCubic).OnStart(PlayCashTally));
+        uiSequence.Append(DOTween.To(() => Income, x => Income = x, GameState.IncomePerProductivity * GameState.Productivity, 2f).SetDelay(0.5f).SetEase(Ease.OutCubic).OnStart(PlayCashTally).OnComplete(SetEyes));
         uiSequence.Join(productivityBar.transform.DOScaleY(0, 2f).SetEase(Ease.OutCubic));
     }
     void AnimatePCLight() {
@@ -158,5 +172,17 @@ public class GameOverController : MonoBehaviour {
         pcLightSequence.Append(pcLight.DOIntensity(6f, 2f));
         pcLightSequence.Append(pcLight.DOIntensity(1.5f, 2f));
         pcLightSequence.SetLoops(-1);
+    }
+    void PlayCashTally() {
+        MicroAudio.PlayEffectSound(cashTallySound);
+    }
+    void SetEyes() {
+        normalEyes.SetActive(false);
+        if(Profits > 0) {
+            happyEyes.SetActive(true);
+        }
+        else {
+            tiredEyes.SetActive(true);
+        }
     }
 }

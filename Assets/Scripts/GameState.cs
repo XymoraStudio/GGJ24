@@ -18,6 +18,8 @@ public static class GameState {
             if(_productivity <= 0) OnGameOver?.Invoke();
         }
     }
+    public static int currentNumberOfActiveEnemies;
+    public const int MaxActiveEnemies = 8;
     public const float MaxProductivity = 100f;
     public const float ProductivityLostPerSec = 1;    
     public const float IncomePerProductivity = 100;

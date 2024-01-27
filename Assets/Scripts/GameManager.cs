@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake() {
         instance = this;
+        GameState.currentNumberOfActiveEnemies = 0;
     }
     // Start is called before the first frame update
     void Start()

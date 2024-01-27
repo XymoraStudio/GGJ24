@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyManager : MonoBehaviour
 {
@@ -10,10 +12,14 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private float maxTimeActive = 8f;
     private float currentTimeActive;
     private int currentActiveCubicle;
+    private int choosenCubicle;
+    public bool allMisbehaving;
 
 
     private void Awake() {
         instance = this;
+        choosenCubicle = 0;
+        allMisbehaving = false;
     }
 
     private void Start() {
@@ -21,27 +27,37 @@ public class EnemyManager : MonoBehaviour
     }
 
 
-    private void Update() {
-        if(currentTimeActive > 0){
-            currentTimeActive -= Time.deltaTime;
-        }
-        else{
-            DeactivatingCurrentActiveCubicle();
-            ChoosingAMisbehavingCubicle();
+    private void Update(){
+        if(!allMisbehaving){
+            if(currentTimeActive > 0){
+                currentTimeActive -= Time.deltaTime;
+            }
+            else{
+                //DeactivatingCurrentMisbehavingCubicle();
+                ChoosingAMisbehavingCubicle();
+            }
         }
     }
 
     
     private void ChoosingAMisbehavingCubicle(){
-        int choosenCubicle = Random.Range(0, cubicles.Count-1);
-        currentActiveCubicle = choosenCubicle;
-        cubicles[choosenCubicle].GetComponent<EnemyActions>().active = true;
-        currentTimeActive = Random.Range(minTimeActive, maxTimeActive);
+        if(GameState.currentNumberOfActiveEnemies != GameState.MaxActiveEnemies){
+            if(choosenCubicle != cubicles.Count){
+                cubicles[choosenCubicle].GetComponentInChildren<EnemyActions>().active = false;
+                GameState.currentNumberOfActiveEnemies++;
+                currentTimeActive = Random.Range(minTimeActive, maxTimeActive);
+                choosenCubicle++;
+            }
+            else{
+                allMisbehaving = true;
+            }
+        }
     }
 
-    private void DeactivatingCurrentActiveCubicle(){
+    private void DeactivatingCurrentMisbehavingCubicle(){
         try{
-            cubicles[currentActiveCubicle].GetComponent<EnemyActions>().active = false;
+            cubicles[currentActiveCubicle].GetComponentInChildren<EnemyActions>().active = true;
+            GameState.currentNumberOfActiveEnemies--;
         }
         catch
         {}

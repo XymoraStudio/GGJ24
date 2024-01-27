@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class EnemyActions : MonoBehaviour
 {
@@ -8,19 +9,15 @@ public class EnemyActions : MonoBehaviour
     private Animator animatorControl;
     [SerializeField] private string workingParametarName;
     [SerializeField] private string misbehaviourParametarName;
+    private Transform startTransform;
 
     private void Awake() {
         animatorControl = GetComponent<Animator>();
+        startTransform = transform;
     } 
     
-    private void Update() {
-        if(active){
-            animatorControl.SetBool(workingParametarName, active);
-            animatorControl.SetBool(misbehaviourParametarName, !active);
-        }
-        else{
-            animatorControl.SetBool(workingParametarName, active);
-            animatorControl.SetBool(misbehaviourParametarName, !active);
-        }
+    private void Update(){
+        animatorControl.SetBool(workingParametarName, active);
+        animatorControl.SetBool(misbehaviourParametarName, !active);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraFollowPlayer : MonoBehaviour
 {
-    public Transform playerPosition;
+    [SerializeField] private Transform playerPosition;
 
     void LateUpdate()
     {

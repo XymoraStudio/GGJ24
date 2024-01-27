@@ -4,6 +4,7 @@ using TMPro;
 
 public static class GameState {
     public static Action OnProductivityChange;
+    public static Action OnGameOver;
     static float _productivity;
     public static float Productivity {
         get => _productivity;
@@ -13,6 +14,7 @@ public static class GameState {
             value = Mathf.Clamp(value, 0f, 100f);
             _productivity = value;
             OnProductivityChange?.Invoke();
+            if(_productivity <= 0) OnGameOver?.Invoke();
         }
     }
     public const float MaxProductivity = 100f;

@@ -6,7 +6,7 @@ public static class GameState {
     // Productivity
     public static Action OnProductivityChange;
     public static Action OnGameOver;
-    static float _productivity;
+    static float _productivity = MaxProductivity;
     public static float Productivity {
         get => _productivity;
         set {
@@ -26,8 +26,8 @@ public static class GameState {
 
     // Time
     public static Action OnDayEnd;
-    const float StartTime = 9;
-    const float EndTime = 17;
+    public const float StartTime = 9;
+    public const float EndTime = 17;
     const float DayDurationSec = 120;
     static float TimePerSec = (EndTime - StartTime) / DayDurationSec;
     static bool DayActive = false;

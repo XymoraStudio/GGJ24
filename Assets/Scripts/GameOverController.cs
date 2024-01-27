@@ -22,12 +22,20 @@ public class GameOverController : MonoBehaviour {
     [Header("Bar")]
     [SerializeField] Image productivityBar;
 
+    [Header("Lights")]
+    [SerializeField] Light pcLight;
+
     float _wages;
     float Wages {
         get => _wages;
         set {
             _wages = value;
-            wagesValueText.text = $"{_wages:N0}$";
+            if(_wages == 0) {
+                wagesValueText.text = $"<color=white>{_wages:N0}$</color>";
+            }
+            else {
+                wagesValueText.text = $"<color=red>{_wages:N0}$</color>";
+            }            
             Profits = 0;
         }
     }
@@ -36,7 +44,12 @@ public class GameOverController : MonoBehaviour {
         get => _expenses;
         set {
             _expenses = value;
-            expensesValueText.text = $"{_expenses:0}$";
+            if(_expenses == 0) {
+                expensesValueText.text = $"<color=white>{_expenses:N0}$</color>";
+            }
+            else {
+                expensesValueText.text = $"<color=red>{_expenses:N0}$</color>";
+            }
             Profits = 0;
         }
     }
@@ -45,7 +58,12 @@ public class GameOverController : MonoBehaviour {
         get => _income;
         set {
             _income = value;
-            incomeValueText.text = $"{_income:0}$";
+            if(_income == 0) {
+                incomeValueText.text = $"<color=white>{_income:N0}$</color>";
+            }
+            else {
+                incomeValueText.text = $"<color=green>{_income:N0}$</color>";
+            }
             Profits = 0;
         }
     }
@@ -54,9 +72,21 @@ public class GameOverController : MonoBehaviour {
         get => _profits;
         set {
             _profits = Income - Wages - Expenses;
-            profitsValueText.text = $"{_profits:0}$";
+            if(_profits > 0) {
+                profitsValueText.text = $"<color=green>{_profits:N0}$</color>";
+            }
+            else if (_profits == 0){
+                profitsValueText.text = $"<color=white>{_profits:N0}$</color>";
+            }
+            else {
+                profitsValueText.text = $"<color=red>{_profits:N0}$</color>";
+            }
         }
     }
+
+    // DOTween
+    Sequence uiSequence;
+    Sequence pcLightSequence;
 
     void Start() {
         // TEST
@@ -65,8 +95,16 @@ public class GameOverController : MonoBehaviour {
         GameState.Expenses = 1000;
         PrepareScreen();
         AnimateGameOver();
+        AnimatePCLight();
     }
-
+    private void OnDestroy() {
+        if(pcLightSequence.IsActive()) {
+            pcLightSequence.Kill();
+        }
+        if(uiSequence.IsActive()) {
+            uiSequence.Kill();
+        }
+    }
     void PrepareScreen() {
         // Scales
         titleText.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
@@ -92,27 +130,32 @@ public class GameOverController : MonoBehaviour {
         Income = 0;
     }
     void AnimateGameOver() {
-        Sequence screenAnimation = DOTween.Sequence();
+        uiSequence = DOTween.Sequence();
 
         // Animate game appearing
-        screenAnimation.Append(titleText.transform.DOScale(1f, 0.5f));
-        screenAnimation.Append(productivityBar.transform.DOScaleY(GameState.Productivity / GameState.MaxProductivity, 0.6f));
-        screenAnimation.Join(wagesText.transform.DOScale(1f, 0.3f));        
-        screenAnimation.Join(wagesText.DOFade(1f, 0.15f));
-        screenAnimation.Join(wagesValueText.DOFade(1f, 0.15f));
-        screenAnimation.Join(expensesText.transform.DOScale(1f, 0.3f).SetDelay(0.15f));
-        screenAnimation.Join(expensesText.DOFade(1f, 0.15f));
-        screenAnimation.Join(expensesValueText.DOFade(1f, 0.15f));
-        screenAnimation.Join(incomeText.transform.DOScale(1f, 0.3f).SetDelay(0.15f));
-        screenAnimation.Join(incomeText.DOFade(1f, 0.15f));
-        screenAnimation.Join(incomeValueText.DOFade(1f, 0.15f));
-        screenAnimation.Join(profitsText.transform.DOScale(1f, 0.3f).SetDelay(0.15f));
-        screenAnimation.Join(profitsText.DOFade(1f, 0.15f));
-        screenAnimation.Join(profitsValueText.DOFade(1f, 0.15f));
+        uiSequence.Append(titleText.transform.DOScale(1f, 0.5f));
+        uiSequence.Append(productivityBar.transform.DOScaleY(GameState.Productivity / GameState.MaxProductivity, 0.6f));
+        uiSequence.Join(wagesText.transform.DOScale(1f, 0.3f));        
+        uiSequence.Join(wagesText.DOFade(1f, 0.15f));
+        uiSequence.Join(wagesValueText.DOFade(1f, 0.15f));
+        uiSequence.Join(expensesText.transform.DOScale(1f, 0.3f).SetDelay(0.15f));
+        uiSequence.Join(expensesText.DOFade(1f, 0.15f));
+        uiSequence.Join(expensesValueText.DOFade(1f, 0.15f));
+        uiSequence.Join(incomeText.transform.DOScale(1f, 0.3f).SetDelay(0.15f));
+        uiSequence.Join(incomeText.DOFade(1f, 0.15f));
+        uiSequence.Join(incomeValueText.DOFade(1f, 0.15f));
+        uiSequence.Join(profitsText.transform.DOScale(1f, 0.3f).SetDelay(0.15f));
+        uiSequence.Join(profitsText.DOFade(1f, 0.15f));
+        uiSequence.Join(profitsValueText.DOFade(1f, 0.15f));
 
-        screenAnimation.Append(DOTween.To(() => Wages, x => Wages = x, GameState.Wages, 1f).SetDelay(0.5f).SetEase(Ease.OutCubic));
-        screenAnimation.Append(DOTween.To(() => Expenses, x => Expenses = x, GameState.Expenses, 1f).SetDelay(0.5f).SetEase(Ease.OutCubic));
-        screenAnimation.Append(DOTween.To(() => Income, x => Income = x, GameState.IncomePerProductivity * GameState.Productivity, 2f).SetDelay(0.5f).SetEase(Ease.OutCubic));
-        screenAnimation.Join(productivityBar.transform.DOScaleY(0, 2f).SetEase(Ease.OutCubic));
+        uiSequence.Append(DOTween.To(() => Wages, x => Wages = x, GameState.Wages, 1f).SetDelay(0.5f).SetEase(Ease.OutCubic));
+        uiSequence.Append(DOTween.To(() => Expenses, x => Expenses = x, GameState.Expenses, 1f).SetDelay(0.5f).SetEase(Ease.OutCubic));
+        uiSequence.Append(DOTween.To(() => Income, x => Income = x, GameState.IncomePerProductivity * GameState.Productivity, 2f).SetDelay(0.5f).SetEase(Ease.OutCubic));
+        uiSequence.Join(productivityBar.transform.DOScaleY(0, 2f).SetEase(Ease.OutCubic));
+    }
+    void AnimatePCLight() {
+        pcLightSequence = DOTween.Sequence();
+        pcLightSequence.Append(pcLight.DOIntensity(2f, 2f));
+        pcLightSequence.Append(pcLight.DOIntensity(0.5f, 2f));
     }
 }

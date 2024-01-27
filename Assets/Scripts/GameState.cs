@@ -6,7 +6,7 @@ public static class GameState {
     // Productivity
     public static Action OnProductivityChange;
     public static Action OnGameOver;
-    static float _productivity;
+    static float _productivity = MaxProductivity;
     public static float Productivity {
         get => _productivity;
         set {
@@ -25,15 +25,32 @@ public static class GameState {
     public static float Expenses { get; set; }
 
     // Time
+    public static Action OnDayEnd;
     public const float StartTime = 9;
     public const float EndTime = 17;
-    public const float DayDurationSec = 120;
-    static float _time;
-    public static float Time {
-        get => _time;
-        set {
-            _time = value;
+    const float DayDurationSec = 120;
+    static float TimePerSec = (EndTime - StartTime) / DayDurationSec;
+    static bool DayActive = false;
+    static float _clock;
+    public static float Clock {
+        get => _clock;
+        private set {
+            _clock = value;
+            if(_clock >= EndTime) {
+                DayActive = false;
+                OnDayEnd?.Invoke();
+            }
         }
+    }
+    public static void StartDay() {
+        Clock = StartTime;
+        DayActive = true;
+    }
+    public static void UpdateTime() {
+        if(!DayActive) {
+            return;
+        }
+        Clock += TimePerSec * Time.deltaTime;        
     }
 
     public static void SetAlpha(TMP_Text text, float alpha) {

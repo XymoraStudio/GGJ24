@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public static class KeyBinds {
+public static class KeyBindsPlayer {
     public static KeyCode lvlRestartKey = KeyCode.R;
     public static KeyCode sprintKey = KeyCode.LeftShift;
     public static KeyCode attack = KeyCode.Mouse0;

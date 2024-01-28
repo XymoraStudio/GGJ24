@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour {
     void Update()
     {
         GameState.UpdateClock();
-        if(Input.GetKeyDown(KeyBinds.lvlRestartKey)){
+        if(Input.GetKeyDown(KeyBindsPlayer.lvlRestartKey)){
             RestartingLvl();
         }
     }

@@ -144,6 +144,7 @@ namespace Microlight.MicroAudio {
         void ClearEmptyAudioSources() {
             for(int i = 0; i < _randomsAudioSource.Count; i++) {
                 if(!_randomsAudioSource[i].isPlaying) {
+                    RequestUnreserveSound?.Invoke(_randomsAudioSource[i]);
                     _randomsAudioSource.RemoveAt(i);
                     i--;
                 }

@@ -68,7 +68,7 @@ public class CubiclesController : MonoBehaviour {
         }
     }
     void SlappedCorrectCubicle(Cubicle cubicle) {
-        GameState.Productivity += 20f;
+        GameState.Productivity += GameState.PRODUCTIVITY_BOOST;
         cubicle.StopLaughing();
         laughCubicles.Remove(cubicle);
         laughCubicleTimer = CUBICLE_LAUGH_TIMER;
@@ -80,7 +80,7 @@ public class CubiclesController : MonoBehaviour {
         }
     }
     void SlappedWrongCubicle(Cubicle cubicle) {
-        GameState.Productivity -= 20f;
+        GameState.Productivity -= GameState.PRODUCTIVITY_PENALTY;
     }
     #endregion
 }

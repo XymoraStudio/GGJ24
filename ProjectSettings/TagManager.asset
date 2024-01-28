@@ -7,6 +7,8 @@ TagManager:
   - Bullet
   - PatrolP
   - OfficeWorker
+  - Patrol point
+  - TriggerForTransparentAbility
   layers:
   - Default
   - TransparentFX
@@ -16,7 +18,7 @@ TagManager:
   - UI
   - Enemy
   - Player
-  - 
+  - Trigger
   - 
   - 
   - 

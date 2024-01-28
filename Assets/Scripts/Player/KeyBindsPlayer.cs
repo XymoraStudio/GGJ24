@@ -6,4 +6,5 @@ public static class KeyBindsPlayer {
     public static KeyCode attack = KeyCode.Mouse0;
     public static KeyCode jump = KeyCode.Space;
     public static KeyCode dash = KeyCode.E;
+    public static KeyCode ability = KeyCode.Q;
 }

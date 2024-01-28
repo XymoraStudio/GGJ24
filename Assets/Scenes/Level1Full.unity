@@ -3132,6 +3132,7 @@ MonoBehaviour:
   cameraTransform: {fileID: 1911442130}
   playerCameraAttach: {fileID: 1819881899}
   characterController: {fileID: 558828702}
+  movementBlocked: 0
 --- !u!1001 &568991165
 PrefabInstance:
   m_ObjectHideFlags: 0

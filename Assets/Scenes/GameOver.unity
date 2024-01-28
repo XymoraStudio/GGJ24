@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414736, b: 0.12107852, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6045,8 +6045,8 @@ MonoBehaviour:
   productivityBar: {fileID: 421144611}
   pcLight: {fileID: 1994020874}
   cashTallySound: {fileID: 8300000, guid: 3353a41f3624cbb438c41083e64550c3, type: 3}
-  happyReactionSound: {fileID: 0}
-  grumpyReactionSound: {fileID: 0}
+  happyReactionSound: {fileID: 8300000, guid: 5b2dd8638ff1a2844bb4a81656a6747e, type: 3}
+  grumpyReactionSound: {fileID: 8300000, guid: 916ecb7420261bd44883ba3c12859ab0, type: 3}
   tiredEyes: {fileID: 178163231}
   happyEyes: {fileID: 557477826}
 --- !u!1 &1681036852

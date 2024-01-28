@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
@@ -34,6 +35,8 @@ public class GameOverController : MonoBehaviour {
     [Header("Eyes")]
     [SerializeField] GameObject tiredEyes;
     [SerializeField] GameObject happyEyes;
+
+    float timer = 3;
 
     float _wages;
     float Wages {
@@ -192,6 +195,16 @@ public class GameOverController : MonoBehaviour {
         }
         else {
             MicroAudio.PlayEffectSound(grumpyReactionSound);
+        }
+    }
+
+    void Update()
+    {
+        timer -= Time.deltaTime;
+        if (Input.GetKeyDown(KeyBindsPlayer.attack) && timer <= 0)
+        {
+            if (GameState.NextScene == "Over") SceneManager.LoadScene("MainMenu");
+            else SceneManager.LoadScene("Level2");
         }
     }
 }

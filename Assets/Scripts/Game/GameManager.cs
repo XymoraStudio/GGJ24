@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
     void Start()
     {
         GameState.OnGameOver += PlayerDeath;
+        GameState.OnDayEnd += FinishedLevel;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -27,7 +28,8 @@ public class GameManager : MonoBehaviour {
     }
 
     void RestartingLvl(){
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        GameState.NextScene = "Over";
+        SceneManager.LoadScene("GameOver");
     }
 
     private void PlayerDeath(){
@@ -41,5 +43,6 @@ public class GameManager : MonoBehaviour {
             GameState.NextScene = "Over";
         }
         SceneManager.LoadScene("GameOver");
-    }    
+    } 
+
 }

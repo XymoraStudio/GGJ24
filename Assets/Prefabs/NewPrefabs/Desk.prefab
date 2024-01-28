@@ -524,6 +524,7 @@ GameObject:
   - component: {fileID: 8105569347010799895}
   - component: {fileID: 2017300402931278676}
   - component: {fileID: 6318885420291963967}
+  - component: {fileID: 4144794199529239742}
   m_Layer: 0
   m_Name: OfficeWorker
   m_TagString: Untagged
@@ -587,6 +588,33 @@ MonoBehaviour:
   animator: {fileID: 2017300402931278676}
   laughingParticle: {fileID: 4109834311973139639}
   slapSoundGroup: {fileID: 11400000, guid: 91a1a8b691418d348afd8f6b7aeff76d, type: 2}
+--- !u!54 &4144794199529239742
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2751812096820623412}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!1 &3164684510640383326
 GameObject:
   m_ObjectHideFlags: 0

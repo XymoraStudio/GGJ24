@@ -10,11 +10,11 @@ public class PlayerController : MonoBehaviour {
 
     // Settings
     const float MOUSE_SENSITIVITY = 2f;
-    const float MOVEMENT_SPEED = 8f;
-    const float SPRINT_STRENGTH = 2f;
-    const float GRAVITY_STRENGTH = 20f;
-    const float JUMP_STRENGTH = 2f;
-    const float DASH_STRENGTH = 5f;
+    const float MOVEMENT_SPEED = 5f;
+    const float SPRINT_STRENGTH = 10f;
+    const float GRAVITY_STRENGTH = 2f;
+    const float JUMP_STRENGTH = 6f;
+    const float DASH_STRENGTH = 100f;
 
     Vector3 movementInput;
 

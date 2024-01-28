@@ -33,9 +33,11 @@ public class GameManager : MonoBehaviour {
     }
 
     private void PlayerDeath(){
+        FindObjectOfType<PlayerController>().movementBlocked = true;
         restartTimer = 3f;
     }
     void FinishedLevel() {
+        FindObjectOfType<PlayerController>().movementBlocked = true;
         if(SceneManager.GetActiveScene().name == "Level1") {
             GameState.NextScene = "Level2";
         }

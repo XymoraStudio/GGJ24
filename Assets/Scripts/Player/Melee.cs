@@ -71,7 +71,7 @@ public class Melee : MonoBehaviour
             GameObject instancePS = Instantiate(slapPS, raycastPoint, Quaternion.identity);
             instancePS.transform.localScale *= 0.25f;
             Destroy(instancePS, 2);
-            attackTarget.GetComponent<Rigidbody>().AddForce(transform.forward.normalized * knockbackForce);
+            attackTarget.GetComponent<Rigidbody>().AddForce(Random.insideUnitSphere.normalized * knockbackForce);
             cameraShake.RestartShake(0.02f);
         }
         

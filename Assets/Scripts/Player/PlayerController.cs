@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour {
     const float JUMP_STRENGTH = 6f;
     const float DASH_STRENGTH = 10f;
 
+    public bool movementBlocked = false;
+
     Vector3 movementInput;
 
     private void Update() {
@@ -24,7 +26,14 @@ public class PlayerController : MonoBehaviour {
         cameraTransform.position = playerCameraAttach.position;
         cameraTransform.rotation = playerCameraAttach.rotation;
     }
+
+    private void Start()
+    {
+        movementBlocked = false;
+    }
+
     void PlayerMoving() {
+        if (movementBlocked) return;
         float inputY = movementInput.y;
         Vector3 inputX = transform.right * Input.GetAxisRaw("Horizontal");
         Vector3 inputZ = transform.forward * Input.GetAxisRaw("Vertical");

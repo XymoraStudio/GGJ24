@@ -47,7 +47,7 @@ public class Melee : MonoBehaviour
     {
         if (Time.time - lastAttackTime > cooldown) // Enough time have passed to attack again
         {
-            handAnimator.SetBool("slap", true);
+            handAnimator.SetTrigger("Slap");
             Invoke("CancleSlap", 0.5f);
 
             RaycastHit hit;

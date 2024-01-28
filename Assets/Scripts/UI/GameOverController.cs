@@ -148,7 +148,7 @@ public class GameOverController : MonoBehaviour {
 
         // Animate game appearing
         uiSequence.Append(titleText.transform.DOScale(1f, 0.5f));
-        uiSequence.Append(productivityBar.transform.DOScaleY(GameState.Productivity / GameState.MaxProductivity, 0.6f));
+        uiSequence.Append(productivityBar.transform.DOScaleY(GameState.Productivity / GameState.MAX_PRODUCTIVITY, 0.6f));
         uiSequence.Join(wagesText.transform.DOScale(1f, 0.3f));        
         uiSequence.Join(wagesText.DOFade(1f, 0.15f));
         uiSequence.Join(wagesValueText.DOFade(1f, 0.15f));
@@ -164,7 +164,7 @@ public class GameOverController : MonoBehaviour {
 
         uiSequence.Append(DOTween.To(() => Wages, x => Wages = x, GameState.Wages, 1f).SetDelay(0.5f).SetEase(Ease.OutCubic).OnStart(PlayCashTally));
         uiSequence.Append(DOTween.To(() => Expenses, x => Expenses = x, GameState.Expenses, 1f).SetDelay(0.5f).SetEase(Ease.OutCubic).OnStart(PlayCashTally));
-        uiSequence.Append(DOTween.To(() => Income, x => Income = x, GameState.IncomePerProductivity * GameState.Productivity, 2f).SetDelay(0.5f).SetEase(Ease.OutCubic).OnStart(PlayCashTally).OnComplete(SetEyes));
+        uiSequence.Append(DOTween.To(() => Income, x => Income = x, GameState.INCOME_PER_PRODUCTIVITY * GameState.Productivity, 2f).SetDelay(0.5f).SetEase(Ease.OutCubic).OnStart(PlayCashTally).OnComplete(SetEyes));
         uiSequence.Join(productivityBar.transform.DOScaleY(0, 2f).SetEase(Ease.OutCubic));
     }
     void AnimatePCLight() {

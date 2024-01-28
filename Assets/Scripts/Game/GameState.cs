@@ -4,8 +4,8 @@ using TMPro;
 
 public static class GameState {
     // Productivity
-    public static Action OnProductivityChange;
-    public static Action OnGameOver;
+    public static event Action OnProductivityChange;
+    public static event Action OnGameOver;
 
     static float _productivity = MAX_PRODUCTIVITY;
     public static float Productivity {
@@ -28,7 +28,8 @@ public static class GameState {
     public const float EXPENSE_PER_SLAP = 100f;
 
     // Time
-    public static Action OnDayEnd;
+    public static event Action OnDayEnd;
+    public static event Action OnClockChange;
 
     public const float START_TIME = 9;
     public const float END_TIME = 17;
@@ -41,6 +42,7 @@ public static class GameState {
         private set {
             if(_clock > END_TIME && value > END_TIME) return;   // Lets clock to update be run but not trigger end day
             _clock = value;
+            OnClockChange?.Invoke();
             if(_clock >= END_TIME) {
                 OnDayEnd?.Invoke();
             }

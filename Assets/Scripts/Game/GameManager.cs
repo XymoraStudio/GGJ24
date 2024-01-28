@@ -3,13 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
-{
+public class GameManager : MonoBehaviour {
     [SerializeField] private int timeAfterDeathToRestart = 3;
 
-    private void Awake() {
-        GameState.currentNumberOfActiveEnemies = 0;
-    }
     // Start is called before the first frame update
     void Start()
     {

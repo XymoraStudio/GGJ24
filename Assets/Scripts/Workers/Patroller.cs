@@ -9,18 +9,13 @@ public class Patroller : MonoBehaviour
     [SerializeField] NavMeshAgent agent;
 
     [Header("Settings")]
-    private Vector3 startingPoint;
-    private Transform destinationPoint;
     [SerializeField] private int minWaitTimeAtPatrolPoint = 3;
     [SerializeField] private int maxWaitTimeAtPatrolPoint = 5;
     private float currentTimeAtPatrolPoint;
-    [SerializeField] private List<Transform> patrolPoints = new List<Transform>();
-    [SerializeField] private string walkingParametarName;
-    [SerializeField] private Animator animatorControl;
+    [SerializeField] List<Transform> patrolPoints = new List<Transform>();
+    [SerializeField] Animator animatorControl;
 
     private void Awake() {
-        agent = GetComponent<NavMeshAgent>();
-        startingPoint = transform.position;
         currentTimeAtPatrolPoint = 0;
     }
 
@@ -31,7 +26,8 @@ public class Patroller : MonoBehaviour
             Patrolling();
             animatorControl.SetTrigger("Walk");
         }
-        else if(agent.destination == transform.position){
+        // koristim distance jer == cesto moze bit ne jednak za floatove
+        else if(Mathf.Abs(Vector3.Distance(agent.destination, transform.position)) < 1f){
             currentTimeAtPatrolPoint -= Time.deltaTime;
         }
     }

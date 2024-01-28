@@ -1430,7 +1430,6 @@ GameObject:
   - component: {fileID: 558828704}
   - component: {fileID: 558828703}
   - component: {fileID: 558828702}
-  - component: {fileID: 558828698}
   - component: {fileID: 558828706}
   m_Layer: 7
   m_Name: Body for scripts
@@ -1457,24 +1456,6 @@ Transform:
   - {fileID: 1759602030}
   m_Father: {fileID: 1262394894}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &558828698
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 558828696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fbf67f765082334a85539c0663a867d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
-  cooldown: 1
-  range: 2
-  raySpawnPoint: {fileID: 1759602030}
-  handAnimator: {fileID: 1847880682}
-  knockbackForce: 1000
 --- !u!143 &558828702
 CharacterController:
   m_ObjectHideFlags: 0
@@ -3257,7 +3238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af15e337a66919439d8bf960f1d0582, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeAfterDeathToRestart: 3
+  restartTimer: 1e+9
 --- !u!1 &1278100844 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 223541589797488844, guid: dc30676018bc8a740b17572b08dd64ee,
@@ -5611,6 +5592,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1847880682}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ad6c6f0202ee3bf4cbfeed7e24f96a35,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1847880683}
   m_SourcePrefab: {fileID: 100100000, guid: ad6c6f0202ee3bf4cbfeed7e24f96a35, type: 3}
 --- !u!4 &1847880679 stripped
 Transform:
@@ -5645,6 +5630,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1847880683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847880680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fbf67f765082334a85539c0663a867d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raySpawnPoint: {fileID: 1759602030}
+  handAnimator: {fileID: 1847880682}
+  slapPS: {fileID: 1241902018169741386, guid: 51c1bbfef18b2fd49a68f8e62f238e1d, type: 3}
+  cameraShake: {fileID: 1911442133}
 --- !u!1001 &1870746412
 PrefabInstance:
   m_ObjectHideFlags: 0

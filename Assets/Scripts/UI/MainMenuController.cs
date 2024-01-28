@@ -68,10 +68,10 @@ public class MainMenuController : MonoBehaviour {
         else ScaleDownAnimation(interactable.transform);
     }
     void ScaleUpAnimation(Transform transform) {
-        transform.DOScale(1.1f, 0.4f).SetEase(Ease.OutElastic);
+        transform.DOScale(1.6f, 0.4f).SetEase(Ease.OutElastic);
     }
     void ScaleDownAnimation(Transform transform) {
-        transform.DOScale(1f, 0.4f).SetEase(Ease.OutElastic);
+        transform.DOScale(1.5f, 0.4f).SetEase(Ease.OutElastic);
     }
     #endregion
 }

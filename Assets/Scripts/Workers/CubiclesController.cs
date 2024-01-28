@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Microlight.MicroAudio;
+using System;
 
 public class CubiclesController : MonoBehaviour {
     [Header("Cubicles")]
@@ -11,6 +12,9 @@ public class CubiclesController : MonoBehaviour {
     [SerializeField] MicroInfinitySoundGroup laughSound;
     [SerializeField] MicroInfinitySoundGroup workSound;
     MicroInfinityInstance activeSoundInstance;
+
+    public static event Action CorrectSlap;
+    public static event Action WrongSlap;
 
     int maxActiveCubicles = 1;
 
@@ -26,6 +30,8 @@ public class CubiclesController : MonoBehaviour {
     }
     private void OnDestroy() {
         Cubicle.OnCubicleSlapped -= SlappedCubicle;
+        CorrectSlap = null;
+        WrongSlap = null;
     }
     private void Update() {
         laughCubicleTimer -= Time.deltaTime;
@@ -42,7 +48,7 @@ public class CubiclesController : MonoBehaviour {
     #region Laughing
     void LaughCubicle() {
         while(true) {
-            Cubicle cubicle = allCubicles[Random.Range(0, allCubicles.Count -1)];
+            Cubicle cubicle = allCubicles[UnityEngine.Random.Range(0, allCubicles.Count -1)];
             if(laughCubicles.Contains(cubicle)) {
                 continue;
             }
@@ -76,6 +82,7 @@ public class CubiclesController : MonoBehaviour {
         cubicle.StopLaughing();
         laughCubicles.Remove(cubicle);
         laughCubicleTimer = CUBICLE_LAUGH_TIMER;
+        CorrectSlap?.Invoke();
 
         // If there is no more laughing cubicles
         if(laughCubicles.Count == 0) {
@@ -85,6 +92,7 @@ public class CubiclesController : MonoBehaviour {
     }
     void SlappedWrongCubicle(Cubicle cubicle) {
         GameState.Productivity -= GameState.PRODUCTIVITY_PENALTY;
+        WrongSlap?.Invoke();
     }
     #endregion
 }

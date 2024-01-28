@@ -8132,6 +8132,10 @@ MonoBehaviour:
   range: 2
   raySpawnPoint: {fileID: 1759602030}
   handAnimator: {fileID: 1847880682}
+<<<<<<< Updated upstream
+=======
+  knockbackForce: 100
+>>>>>>> Stashed changes
 --- !u!114 &558828699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8151,8 +8155,11 @@ MonoBehaviour:
   gravityStrenght: 20
   jumpStrenght: 2
   dashStrenght: 5
+<<<<<<< Updated upstream
   movementInput: {x: 0, y: 0, z: 0}
   cc: {fileID: 0}
+=======
+>>>>>>> Stashed changes
 --- !u!114 &558828700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32138,9 +32145,12 @@ MonoBehaviour:
   - {fileID: 610906203}
   minTimeActive: 3
   maxTimeActive: 5
+<<<<<<< Updated upstream
   currentTimeActive: 0
   currentActiveCubicle: 0
   choosenCubicle: 0
+=======
+>>>>>>> Stashed changes
   allMisbehaving: 0
 --- !u!1 &1676677847 stripped
 GameObject:
@@ -36858,8 +36868,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curve:
+<<<<<<< Updated upstream
     m_Curve:
     - time: -0.0039370116
+=======
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.0039370116
+>>>>>>> Stashed changes
       value: 0.995283
       inSlope: -2.6166792
       outSlope: -2.6166792
@@ -36867,7 +36884,12 @@ MonoBehaviour:
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.31525853
+<<<<<<< Updated upstream
     - time: 0.9793849
+=======
+    - serializedVersion: 3
+      time: 0.9793849
+>>>>>>> Stashed changes
       value: 0.017340016
       inSlope: -0.011640234
       outSlope: -0.011640234

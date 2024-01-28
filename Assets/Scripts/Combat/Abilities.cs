@@ -26,12 +26,22 @@ public class Abilities : MonoBehaviour
     void TransparencyEnabling(bool enable){
         if(enable){
             for(int i=0; i<materialForWalls.Count; i++){
+<<<<<<< Updated upstream
                 materialForWalls[i].GetComponent<Renderer>().material = transparentMaterial;
+=======
+                Debug.Log("changing");
+                Debug.Log(materialForWalls[i].GetComponent<MeshRenderer>().materials[materialForWalls[i].GetComponent<MeshRenderer>().materials.Count()-1]);
+                materialForWalls[i].GetComponent<MeshRenderer>().materials[materialForWalls[i].GetComponent<MeshRenderer>().materials.Count()-1] = transparentMaterial;
+>>>>>>> Stashed changes
             }
         }
         else{
             for(int i=0; i<materialForWalls.Count; i++){
+<<<<<<< Updated upstream
                 materialForWalls[i].GetComponent<Renderer>().material = normalMaterial;
+=======
+                materialForWalls[i].GetComponent<Renderer>().materials[materialForWalls[i].GetComponent<MeshRenderer>().materials.Count() - 1] = normalMaterial;
+>>>>>>> Stashed changes
             }
         }
     }

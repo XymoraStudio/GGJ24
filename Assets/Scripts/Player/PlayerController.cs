@@ -1,4 +1,6 @@
+using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
     [Header("Camera")]
@@ -15,14 +17,28 @@ public class PlayerController : MonoBehaviour {
     const float GRAVITY_STRENGTH = 2f;
     const float JUMP_STRENGTH = 6f;
     const float DASH_STRENGTH = 100f;
+    const float DASH_RESTART_TIME = 4f;
+    private float timerDash;
+    [SerializeField] private Image cooldownImage;
 
     Vector3 movementInput;
+
+    private void Start() {
+        timerDash = DASH_RESTART_TIME;
+    }
 
     private void Update() {
         RotatingThePlayer();
         PlayerMoving();
         cameraTransform.position = playerCameraAttach.position;
         cameraTransform.rotation = playerCameraAttach.rotation;
+        if(timerDash < DASH_RESTART_TIME){
+            timerDash -= Time.deltaTime;
+            if(timerDash <= 0){
+                timerDash = DASH_RESTART_TIME;
+                cooldownImage.fillAmount = 0;
+            }
+        }
     }
     void PlayerMoving() {
         float inputY = movementInput.y;
@@ -44,7 +60,10 @@ public class PlayerController : MonoBehaviour {
 
         if(characterController.isGrounded) {
             movementInput.y = Physics.gravity.y * GRAVITY_STRENGTH * Time.deltaTime;
-            if(Input.GetKeyDown(KeyBindsPlayer.dash)) {
+            if(Input.GetKeyDown(KeyBindsPlayer.dash) && DASH_RESTART_TIME == timerDash) {
+                timerDash -= Time.deltaTime;
+                cooldownImage.transform.localScale = Vector3.one;
+                cooldownImage.transform.DOScaleY(0, DASH_RESTART_TIME);
                 movementInput *= DASH_STRENGTH;
             }
         }

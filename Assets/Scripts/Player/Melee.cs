@@ -7,11 +7,13 @@ public class Melee : MonoBehaviour
     float knockbackForce = 500;
     [SerializeField] Transform raySpawnPoint; // From which point we cast ray
     [SerializeField] Animator handAnimator;
+    [SerializeField] private GameObject slapPS;
 
     private Material[] materials;
     [SerializeField] private CameraShake cameraShake;
     bool canAttack = true;
     Worker attackTarget;
+    private Vector3 raycastPoint;
 
     void Update()
     {
@@ -33,6 +35,7 @@ public class Melee : MonoBehaviour
             //Debug.DrawRay(raySpawnPoint.position, raySpawnPoint.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
             if(hit.collider.tag == "OfficeWorker") {
                 attackTarget = hit.collider.transform.parent.GetComponent<Worker>();
+                raycastPoint = hit.point;
             }
             else {
                 attackTarget = null;
@@ -67,6 +70,8 @@ public class Melee : MonoBehaviour
         if(attackTarget != null) {
             Debug.Log("slap");
             attackTarget.SlapWorker();
+            GameObject instancePS = Instantiate(slapPS, raycastPoint, Quaternion.identity);
+            Destroy(instancePS, 2);
             attackTarget.GetComponent<Rigidbody>().AddForce(transform.forward.normalized * knockbackForce);
             cameraShake.RestartShake(0.02f);
         }

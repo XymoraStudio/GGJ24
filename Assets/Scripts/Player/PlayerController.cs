@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour {
         movementInput = movementInput.normalized;
 
         // Sprint or walk
-        if(Input.GetKey(KeyBinds.sprintKey)) {
+        if(Input.GetKey(KeyBindsPlayer.sprintKey)) {
             movementInput *= SPRINT_STRENGTH;
         }
         else {
@@ -44,14 +44,14 @@ public class PlayerController : MonoBehaviour {
 
         if(characterController.isGrounded) {
             movementInput.y = Physics.gravity.y * GRAVITY_STRENGTH * Time.deltaTime;
-            if(Input.GetKeyDown(KeyBinds.dash)) {
+            if(Input.GetKeyDown(KeyBindsPlayer.dash)) {
                 movementInput *= DASH_STRENGTH;
             }
         }
         else {
             movementInput.y += Physics.gravity.y * GRAVITY_STRENGTH * Time.deltaTime;
         }
-        if(Input.GetKey(KeyBinds.jump) && characterController.isGrounded) {
+        if(Input.GetKey(KeyBindsPlayer.jump) && characterController.isGrounded) {
             movementInput.y = JUMP_STRENGTH;
         }
 

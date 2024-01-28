@@ -30,12 +30,12 @@ public class Melee : MonoBehaviour
     void Update()
     {
         // We update melee state
-        if (Input.GetKeyDown(KeyBinds.attack))
+        if (Input.GetKeyDown(KeyBindsPlayer.attack))
         {
             if (state == State.Idle) state = State.Melee;
         }
 
-        if (Input.GetKeyUp(KeyBinds.attack))
+        if (Input.GetKeyUp(KeyBindsPlayer.attack))
         {
             if (state == State.Melee) state = State.Idle;
         }

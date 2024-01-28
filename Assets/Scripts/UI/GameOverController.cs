@@ -28,9 +28,10 @@ public class GameOverController : MonoBehaviour {
 
     [Header("Sounds")]
     [SerializeField] AudioClip cashTallySound;
+    [SerializeField] AudioClip happyReactionSound;
+    [SerializeField] AudioClip grumpyReactionSound;
 
     [Header("Eyes")]
-    [SerializeField] GameObject normalEyes;
     [SerializeField] GameObject tiredEyes;
     [SerializeField] GameObject happyEyes;
 
@@ -139,8 +140,7 @@ public class GameOverController : MonoBehaviour {
         Income = 0;
 
         // Eyes
-        normalEyes.SetActive(true);
-        tiredEyes.SetActive(false);
+        tiredEyes.SetActive(true);
         happyEyes.SetActive(false);
     }
     void AnimateGameOver() {
@@ -164,7 +164,7 @@ public class GameOverController : MonoBehaviour {
 
         uiSequence.Append(DOTween.To(() => Wages, x => Wages = x, GameState.Wages, 1f).SetDelay(0.5f).SetEase(Ease.OutCubic).OnStart(PlayCashTally));
         uiSequence.Append(DOTween.To(() => Expenses, x => Expenses = x, GameState.Expenses, 1f).SetDelay(0.5f).SetEase(Ease.OutCubic).OnStart(PlayCashTally));
-        uiSequence.Append(DOTween.To(() => Income, x => Income = x, GameState.INCOME_PER_PRODUCTIVITY * GameState.Productivity, 2f).SetDelay(0.5f).SetEase(Ease.OutCubic).OnStart(PlayCashTally).OnComplete(SetEyes));
+        uiSequence.Append(DOTween.To(() => Income, x => Income = x, GameState.INCOME_PER_PRODUCTIVITY * GameState.Productivity, 2f).SetDelay(0.5f).SetEase(Ease.OutCubic).OnStart(PlayCashTally).OnUpdate(SetEyes).OnComplete(BossReaction));
         uiSequence.Join(productivityBar.transform.DOScaleY(0, 2f).SetEase(Ease.OutCubic));
     }
     void AnimatePCLight() {
@@ -177,12 +177,21 @@ public class GameOverController : MonoBehaviour {
         MicroAudio.PlayEffectSound(cashTallySound);
     }
     void SetEyes() {
-        normalEyes.SetActive(false);
         if(Profits > 0) {
             happyEyes.SetActive(true);
+            tiredEyes.SetActive(false);
         }
         else {
             tiredEyes.SetActive(true);
+            happyEyes.SetActive(false);
+        }
+    }
+    void BossReaction() {
+        if(Profits > 0) {
+            MicroAudio.PlayEffectSound(happyReactionSound);
+        }
+        else {
+            MicroAudio.PlayEffectSound(grumpyReactionSound);
         }
     }
 }

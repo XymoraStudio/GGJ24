@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1234914312431128045}
   - component: {fileID: 7776113529242063014}
   m_Layer: 0
-  m_Name: Cubicle-Trio
+  m_Name: Cubicle-Trio-old
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

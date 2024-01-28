@@ -101,7 +101,7 @@ public class Melee : MonoBehaviour
             if (hit.collider.tag == "OfficeWorker")
             {
                 hit.collider.transform.parent.GetComponent<Worker>().SlapWorker();
-                hit.collider.transform.parent.GetComponent<Rigidbody>().AddForce(transform.forward.normalized * knockbackForce);
+                hit.collider.transform.parent.GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-1,1), Random.Range(-1,1), Random.Range(-1,1)) * knockbackForce);
                 cameraShake.RestartShake(0.02f);
             }
         }

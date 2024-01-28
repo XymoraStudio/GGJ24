@@ -26,6 +26,7 @@ public class MainMenuController : MonoBehaviour {
         // Title
         //1.5
         titleImage.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
+        Cursor.lockState = CursorLockMode.None;
         // rotation 11
         AnimateTitle();
 

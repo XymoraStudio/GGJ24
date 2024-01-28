@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour {
     const float SPRINT_STRENGTH = 10f;
     const float GRAVITY_STRENGTH = 2f;
     const float JUMP_STRENGTH = 6f;
-    const float DASH_STRENGTH = 100f;
+    const float DASH_STRENGTH = 10f;
 
     Vector3 movementInput;
 

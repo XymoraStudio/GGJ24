@@ -103,9 +103,9 @@ public class GameOverController : MonoBehaviour {
 
     void Start() {
         // TEST
-        GameState.Productivity = 50;
-        GameState.Wages = 2500;
-        GameState.Expenses = 1000;
+        //GameState.Productivity = 50;
+        //GameState.Wages = 2500;
+        //GameState.Expenses = 1000;
         PrepareScreen();
         AnimateGameOver();
         AnimatePCLight();

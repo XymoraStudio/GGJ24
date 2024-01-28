@@ -27,7 +27,7 @@ public static class GameState {
     public const float PRODUCTIVITY_PENALTY = 20f;
     public static float Wages { get; set; }
     public static float Expenses { get; set; }
-    public const float EXPENSE_PER_SLAP = 100f;
+    public const float EXPENSE_PER_SLAP = 200f;
 
     // Time
     public static event Action OnDayEnd;
@@ -35,7 +35,7 @@ public static class GameState {
 
     public const float START_TIME = 9;
     public const float END_TIME = 17;
-    const float DAY_DURATION = 10; // 120 ORG
+    const float DAY_DURATION = 60; // 120 ORG
     static float TIME_PASS_PER_SEC = (END_TIME - START_TIME) / DAY_DURATION;
 
     static float _clock;
@@ -54,6 +54,8 @@ public static class GameState {
         Clock = START_TIME;
         Productivity = MAX_PRODUCTIVITY;
         OnProductivityChange?.Invoke();
+        GameState.Expenses = 0;
+        GameState.Wages = 3000;
     }
     public static void UpdateClock() {
         Clock += TIME_PASS_PER_SEC * Time.deltaTime;        

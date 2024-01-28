@@ -104,7 +104,6 @@ public class Melee : MonoBehaviour
                 hit.collider.transform.parent.GetComponent<Rigidbody>().AddForce(transform.forward.normalized * knockbackForce);
                 cameraShake.RestartShake(0.02f);
             }
-            lastAttackTime = Time.time;
         }
     }
 }

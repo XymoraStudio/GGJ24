@@ -5487,6 +5487,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   raySpawnPoint: {fileID: 1759602030}
   handAnimator: {fileID: 1847880682}
+  slapPS: {fileID: 1241902018169741386, guid: 51c1bbfef18b2fd49a68f8e62f238e1d, type: 3}
   cameraShake: {fileID: 1911442133}
 --- !u!1001 &1870746412
 PrefabInstance:

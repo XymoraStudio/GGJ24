@@ -32,6 +32,10 @@ public class CubiclesController : MonoBehaviour {
         if(laughCubicleTimer <= 0 && laughCubicles.Count < maxActiveCubicles) {
             LaughCubicle();
         }
+        if (laughCubicles.Count > 0)
+        {
+            GameState.Productivity -= GameState.PRODUCTIVITY_LOST_PER_SEC * Time.deltaTime;
+        }
     }
 
     // Laughing in cubicles

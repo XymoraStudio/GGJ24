@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414736, b: 0.12107852, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3014,12 +3014,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fbf67f765082334a85539c0663a867d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
-  cooldown: 1
-  range: 2
   raySpawnPoint: {fileID: 1759602030}
   handAnimator: {fileID: 1847880682}
-  knockbackForce: 10
+  slapPS: {fileID: 0}
+  cameraShake: {fileID: 0}
 --- !u!143 &558828702
 CharacterController:
   m_ObjectHideFlags: 0
@@ -8024,7 +8022,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af15e337a66919439d8bf960f1d0582, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeAfterDeathToRestart: 3
+  restartTimer: 1e+9
 --- !u!1 &1278100844 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 223541589797488844, guid: dc30676018bc8a740b17572b08dd64ee,
@@ -11780,6 +11778,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1847880682}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ad6c6f0202ee3bf4cbfeed7e24f96a35,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1847880683}
   m_SourcePrefab: {fileID: 100100000, guid: ad6c6f0202ee3bf4cbfeed7e24f96a35, type: 3}
 --- !u!4 &1847880679 stripped
 Transform:
@@ -11814,6 +11816,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1847880683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847880680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fbf67f765082334a85539c0663a867d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raySpawnPoint: {fileID: 1759602030}
+  handAnimator: {fileID: 1847880682}
+  slapPS: {fileID: 1241902018169741386, guid: 51c1bbfef18b2fd49a68f8e62f238e1d, type: 3}
+  cameraShake: {fileID: 1911442133}
 --- !u!1001 &1870746412
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12682,6 +12700,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2048945700031352777, guid: b6f4152259ece3c4f95488a6bd074c58,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3390143764416838063, guid: b6f4152259ece3c4f95488a6bd074c58,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -10.390015
       objectReference: {fileID: 0}
     - target: {fileID: 5921743198930983998, guid: b6f4152259ece3c4f95488a6bd074c58,
         type: 3}

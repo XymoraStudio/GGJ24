@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 424a815e9094a9e42a349c6a63288719, type: 3}
+  m_Name: SlapSoundGroup
+  m_EditorClassIdentifier: 
+  _clipList:
+  - {fileID: 8300000, guid: 154c2725b9de25f47ac86765108403b1, type: 3}
+  - {fileID: 8300000, guid: 0ebbd057d652ca245b5ada85f8c315d5, type: 3}
+  - {fileID: 8300000, guid: 8e588192406c09d448acf4e32a8c5125, type: 3}
+  - {fileID: 8300000, guid: 05f8614d3ba52fb4d8acecff5dd7a0e8, type: 3}

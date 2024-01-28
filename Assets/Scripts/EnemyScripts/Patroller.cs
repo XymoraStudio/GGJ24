@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyControllerAndMovement : MonoBehaviour
+public class Patroller : MonoBehaviour
 {
-    private NavMeshAgent agent;
-    
+    [Header("NavMesh")]
+    [SerializeField] NavMeshAgent agent;
+
+    [Header("Settings")]
     private Vector3 startingPoint;
     private Transform destinationPoint;
     [SerializeField] private int minWaitTimeAtPatrolPoint = 3;
@@ -27,7 +29,7 @@ public class EnemyControllerAndMovement : MonoBehaviour
     {
         if(currentTimeAtPatrolPoint <= 0){
             Patrolling();
-            animatorControl.SetBool(walkingParametarName, true);
+            animatorControl.SetTrigger("Walk");
         }
         else if(agent.destination == transform.position){
             currentTimeAtPatrolPoint -= Time.deltaTime;
@@ -41,14 +43,9 @@ public class EnemyControllerAndMovement : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other){
-        Debug.Log("uslo");
         if(other.tag == "PatrolP"){
             agent.destination = transform.position;
-            animatorControl.SetBool(walkingParametarName, false);
+            animatorControl.SetTrigger("Idle");
         }
-    }
-
-    private void ReturningToHisDesk(){
-        agent.destination = startingPoint;
     }
 }

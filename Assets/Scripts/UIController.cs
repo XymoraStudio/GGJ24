@@ -11,8 +11,8 @@ public class UIController : MonoBehaviour {
         GameState.StartDay();
     }
     private void Update() {
-        GameState.UpdateTime();
-        productivityBar.localScale = new Vector3(1f, GameState.Productivity / GameState.MaxProductivity, 1f);
-        clockHandTransform.transform.eulerAngles = new Vector3(0f, 0f, Mathf.Lerp(CLOCK_START_ANGLE, CLOCK_END_ANGLE, (GameState.Clock - GameState.StartTime) / (GameState.EndTime - GameState.StartTime)));
+        GameState.UpdateClock();
+        productivityBar.localScale = new Vector3(1f, GameState.Productivity / GameState.MAX_PRODUCTIVITY, 1f);
+        clockHandTransform.transform.eulerAngles = new Vector3(0f, 0f, Mathf.Lerp(CLOCK_START_ANGLE, CLOCK_END_ANGLE, (GameState.Clock - GameState.START_TIME) / (GameState.END_TIME - GameState.START_TIME)));
     }
 }

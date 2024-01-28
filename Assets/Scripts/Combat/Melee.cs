@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Melee : MonoBehaviour
@@ -28,12 +26,12 @@ public class Melee : MonoBehaviour
     void Update()
     {
         // We update melee state
-        if (Input.GetKeyDown(KeyBinds.instance.attack))
+        if (Input.GetKeyDown(KeyBinds.attack))
         {
             if (state == State.Idle) state = State.Melee;
         }
 
-        if (Input.GetKeyUp(KeyBinds.instance.attack))
+        if (Input.GetKeyUp(KeyBinds.attack))
         {
             if (state == State.Melee) state = State.Idle;
         }
@@ -56,7 +54,7 @@ public class Melee : MonoBehaviour
             if (Physics.Raycast(raySpawnPoint.position, raySpawnPoint.TransformDirection(Vector3.forward), out hit, range))
             {
                 if (hit.collider.tag == "OfficeWorker")
-                    hit.collider.transform.parent.GetComponent<EnemyActions>().active = false;
+                    hit.collider.transform.parent.GetComponent<Worker>().SlapWorker();
                 Debug.DrawRay(raySpawnPoint.position, raySpawnPoint.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
                 lastAttackTime = Time.time;
             }

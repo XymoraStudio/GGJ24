@@ -5,11 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
     [SerializeField] private int timeAfterDeathToRestart = 3;
 
     private void Awake() {
-        instance = this;
         GameState.currentNumberOfActiveEnemies = 0;
     }
     // Start is called before the first frame update
@@ -22,7 +20,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyBinds.instance.lvlRestartKey)){
+        GameState.UpdateClock();
+        if(Input.GetKeyDown(KeyBinds.lvlRestartKey)){
             RestartingLvl();
         }
     }

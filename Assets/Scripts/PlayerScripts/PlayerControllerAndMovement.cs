@@ -1,10 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerControllerAndMovement : MonoBehaviour
-{
-    public static PlayerControllerAndMovement instance;
+public class PlayerControllerAndMovement : MonoBehaviour {
     [Header ("Camera")]
     [SerializeField] private float mouseSensitivity = 2f;
     public Transform playerCamera;
@@ -21,7 +17,6 @@ public class PlayerControllerAndMovement : MonoBehaviour
     private CharacterController cc;
 
     private void Awake() {
-        instance = this;
         cc = GetComponent<CharacterController>();
     }
 
@@ -41,7 +36,7 @@ public class PlayerControllerAndMovement : MonoBehaviour
         {
             movementInput = movementInput.normalized;
         }
-        if(Input.GetKey(KeyBinds.instance.sprintKey)){
+        if(Input.GetKey(KeyBinds.sprintKey)){
             movementInput *= sprintStrenght;
         }
         else{
@@ -50,14 +45,14 @@ public class PlayerControllerAndMovement : MonoBehaviour
         movementInput.y = inputY;
         if(cc.isGrounded){
             movementInput.y = Physics.gravity.y * gravityStrenght * Time.deltaTime;
-            if(Input.GetKeyDown(KeyBinds.instance.dash)){
+            if(Input.GetKeyDown(KeyBinds.dash)){
                 movementInput *= dashStrenght;
             }
         }
         else{
             movementInput.y += Physics.gravity.y * gravityStrenght * Time.deltaTime;
         }
-        if(Input.GetKey(KeyBinds.instance.jump) && cc.isGrounded){
+        if(Input.GetKey(KeyBinds.jump) && cc.isGrounded){
             movementInput.y = jumpStrenght;
         }
         cc.Move(movementInput * Time.deltaTime);

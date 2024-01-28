@@ -24,7 +24,7 @@ public static class GameState {
     public const float PRODUCTIVITY_LOST_PER_SEC = 1f;    
     public const float INCOME_PER_PRODUCTIVITY = 100;
     public const float PRODUCTIVITY_BOOST = 10f;
-    public const float PRODUCTIVITY_PENALTY = 20f;
+    public const float PRODUCTIVITY_PENALTY = 100f;
     public static float Wages { get; set; }
     public static float Expenses { get; set; }
     public const float EXPENSE_PER_SLAP = 100f;
@@ -56,6 +56,9 @@ public static class GameState {
     public static void UpdateClock() {
         Clock += TIME_PASS_PER_SEC * Time.deltaTime;        
     }
+
+    // Levels
+    public static string NextScene = "Level1";
 
     #region Utility
     public static void SetAlpha(TMP_Text text, float alpha) {

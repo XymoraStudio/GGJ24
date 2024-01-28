@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
-    [SerializeField] private int timeAfterDeathToRestart = 3;
+    [SerializeField] private float restartTimer = 999999999;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +16,10 @@ public class GameManager : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        restartTimer -= Time.deltaTime;
+        if(restartTimer <= 0) {
+            RestartingLvl();
+        }
         GameState.UpdateClock();
         if(Input.GetKeyDown(KeyBindsPlayer.lvlRestartKey)){
             RestartingLvl();
@@ -27,6 +31,15 @@ public class GameManager : MonoBehaviour {
     }
 
     private void PlayerDeath(){
-        Invoke(nameof(RestartingLvl), timeAfterDeathToRestart);
+        restartTimer = 3f;
     }
+    void FinishedLevel() {
+        if(SceneManager.GetActiveScene().name == "Level1") {
+            GameState.NextScene = "Level2";
+        }
+        else {
+            GameState.NextScene = "Over";
+        }
+        SceneManager.LoadScene("GameOver");
+    }    
 }

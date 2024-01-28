@@ -16,7 +16,7 @@ public class CubiclesController : MonoBehaviour {
     public static event Action CorrectSlap;
     public static event Action WrongSlap;
 
-    int maxActiveCubicles = 1;
+    int maxActiveCubicles = 2;
 
     const float CUBICLE_LAUGH_TIMER = 2f;
     float laughCubicleTimer = CUBICLE_LAUGH_TIMER;

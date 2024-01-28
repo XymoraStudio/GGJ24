@@ -21,7 +21,7 @@ public static class GameState {
     }
 
     public const float MAX_PRODUCTIVITY = 100f;
-    public const float PRODUCTIVITY_LOST_PER_SEC = 1f;    
+    public const float PRODUCTIVITY_LOST_PER_SEC = 2.5f;    
     public const float INCOME_PER_PRODUCTIVITY = 100;
     public const float PRODUCTIVITY_BOOST = 10f;
     public const float PRODUCTIVITY_PENALTY = 20f;

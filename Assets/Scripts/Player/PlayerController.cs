@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour {
             movementInput *= SPRINT_STRENGTH;
         }
         else {
-            movementInput *= MOVEMENT_SPEED;
+            movementInput *= SPRINT_STRENGTH;
         }
 
         // Jump

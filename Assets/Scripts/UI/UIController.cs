@@ -34,6 +34,10 @@ public class UIController : MonoBehaviour {
     private void OnDestroy() {
         GameState.OnProductivityChange -= UpdateProductivityStatus;
         GameState.OnClockChange -= UpdateClockStatus;
+        CubiclesController.CorrectSlap -= AnimateProductivity;
+        CubiclesController.WrongSlap -= AnimateHarassment;
+        GameState.OnDayEnd -= ShiftOver;
+        GameState.OnGameOver -= GameOver;
     }
     void UpdateProductivityStatus() {
         productivityBar.fillAmount = GameState.Productivity / GameState.MAX_PRODUCTIVITY;

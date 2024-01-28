@@ -60,7 +60,11 @@ public class MainMenuController : MonoBehaviour {
         SceneManager.LoadScene("Level1");
     }
     void ExitGame(MicroInteractable interactable) {
-        UnityEditor.EditorApplication.isPlaying = false;
+        #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+        #else
+                Application.Quit();
+        #endif
     }
 
     #region Animation

@@ -28,11 +28,11 @@ public class GameManager : MonoBehaviour {
     }
 
     void RestartingLvl(){
-        GameState.NextScene = "Over";
         SceneManager.LoadScene("GameOver");
     }
 
     private void PlayerDeath(){
+        GameState.NextScene = "Over";
         FindObjectOfType<PlayerController>().movementBlocked = true;
         restartTimer = 3f;
     }
@@ -44,7 +44,8 @@ public class GameManager : MonoBehaviour {
         else {
             GameState.NextScene = "Over";
         }
-        SceneManager.LoadScene("GameOver");
+        restartTimer = 3;
+        //SceneManager.LoadScene("GameOver");
     } 
 
 }
